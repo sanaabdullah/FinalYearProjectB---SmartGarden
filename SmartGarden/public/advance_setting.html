@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Welcome to Smart Garden</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/heroic-features.css" rel="stylesheet">
+
+ 
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]-->
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <!--[endif]-->
+
+</head>
+
+<body>
+
+ <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Smart Garden</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact/index.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="verification/index.html">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="authorization/index.html">Login/SignUp</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="dashboard1.html">Dashboard</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <br>
+   <a href="authorization/index.html" class="btn btn-info btn-sm" style="background-color: indianred; margin-left: 1160px;">
+          <span class="glyphicon glyphicon-log-out"></span> Logout
+   </a>
+    
+  <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                        <form role="form">
+                                        <div class="label" align="center">
+                                        <br>
+                                        <h4> <b> Advance Settings </b> </h4>
+                                        </div>
+                                        <br>
+                                        <br>
+                                    <form role="form">
+                                        <h5>Water Level</h5>
+                                        <hr>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default temperature range for the green house">Minimum Capacity</label>
+                                            <div class="form-group input-group">
+                                                <input type="text" class="form-control" name="water" value="20.0">
+                                                <span class="input-group-addon">LITRE </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default temperature range for the green house">Maximum Capacity</label>
+                                            <div class="form-group input-group">
+                                                <input type="text" class="form-control" value="40.0">
+                                                <span class="input-group-addon">Litre </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default temperature range for the green house">Error Range</label>
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">&#177; </span>
+                                                <input type="text" class="form-control" value="5.0">
+                                                <span class="input-group-addon">Litre </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default longest duration of time (to avoid electricity wasting) ">Refresh Schedule</label>
+                                            <div class="form-group input-group">
+                                                <select class="form-control">
+                                                    <option>Every 1 second</option>
+                                                    <option>Every 2 seconds</option>
+                                                    <option selected>Every 5 seconds</option>
+                                                    <option>Every 10 seconds</option>
+                                                    <option>Every 60 seconds</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                       <br>
+                                        <h5>Temperature</h5>
+                                        <hr>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default water level range of the water bucket ">Default Unit</label>
+                                            <div class="form-group input-group">
+                                                <select class="form-control">
+                                                    <option selected>Celcius (&#8451;)</option>
+                                                    <option>Farenheit (F)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default temperature range for the green house">Minimum Amount</label>
+                                            <div class="form-group input-group">
+                                                <input type="text" class="form-control" value="20.0">
+                                                <span class="input-group-addon">&#8451; </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default temperature range for the green house">Maximum Amoount</label>
+                                            <div class="form-group input-group">
+                                                <input type="text" class="form-control" value="40.0">
+                                                <span class="input-group-addon">&#8451; </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default temperature range for the green house">Error Range</label>
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">&#177; </span>
+                                                <input type="text" class="form-control" value="5.0">
+                                                <span class="input-group-addon">&#8451; </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default longest duration of time (to avoid electricity wasting) ">Refresh Schedule</label>
+                                            <div class="form-group input-group">
+                                                <select class="form-control">
+                                                    <option>Every 1 second</option>
+                                                    <option>Every 2 seconds</option>
+                                                    <option selected>Every 5 seconds</option>
+                                                    <option>Every 10 seconds</option>
+                                                    <option>Every 60 seconds</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h5>Moisture</h5>
+                                        <hr>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default water level range of the water bucket ">Default Unit</label>
+                                            <div class="form-group input-group">
+                                                <select class="form-control">
+                                                    <option selected>Percentage (%)</option>
+                                                    <option>Others (others)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default temperature range for the green house">Minimum Amount</label>
+                                            <div class="form-group input-group">
+                                                <input type="text" class="form-control" value="20.0">
+                                                <span class="input-group-addon">% </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default temperature range for the green house">Maximum Amount</label>
+                                            <div class="form-group input-group">
+                                                <input type="text" class="form-control" value="40.0">
+                                                <span class="input-group-addon">% </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default temperature range for the green house">Error Range</label>
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">&#177; </span>
+                                                <input type="text" class="form-control" value="5.0">
+                                                <span class="input-group-addon">% </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default longest duration of time (to avoid electricity wasting) ">Refresh Schedule</label>
+                                            <div class="form-group input-group">
+                                                <select class="form-control">
+                                                    <option>Every 1 second</option>
+                                                    <option>Every 2 seconds</option>
+                                                    <option selected>Every 5 seconds</option>
+                                                    <option>Every 10 seconds</option>
+                                                    <option>Every 60 seconds</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h5>Ventilation</h5>
+                                        <hr>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default longest duration of time (to avoid electricity wasting) ">Ventilation Duration</label>
+                                            <div class="form-group input-group">
+                                                <select class="form-control">
+                                                <option>1 hour</option>
+                                                <option>2 hours</option>
+                                                <option selected>3 hours</option>
+                                                <option>4 hours</option>
+                                                <option>5 hours</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <h5>Light</h5>
+                                        <hr>
+                                        <div class="form-group" style="margin-right: 30%; margin-left: 30%">
+                                            <label data-toggle="tooltip" data-placement="right" title="Set the default longest duration of time (to avoid electricity wasting) ">Light Duration</label>
+                                            <div class="form-group input-group">
+                                                <select class="form-control">
+                                                <option>1 hour</option>
+                                                <option>2 hours</option>
+                                                <option selected>3 hours</option>
+                                                <option>4 hours</option>
+                                                <option>5 hours</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                        </form>
+                  </form>
+            </div>
+        </div>
+    </div>
+                        <!-- /.panel-body -->
+          
+<!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

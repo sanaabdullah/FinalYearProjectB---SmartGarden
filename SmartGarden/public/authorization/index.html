@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Welcome to Smart Garden</title>
+
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/heroic-features.css" rel="stylesheet">
+
+    <!-- Import and configure the Firebase SDK -->
+    <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
+    <!-- If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
+    
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
+    <script src="/__/firebase/init.js"></script>
+      
+<script type="text/javascript">
+
+    /**
+     * Handles the sign in button press.
+     */
+    function toggleSignIn() {
+        window.location.href = '../dashboard1.html';
+      if (firebase.auth().currentUser) {
+        // [START signout]
+        firebase.auth().signOut();
+        // [END signout]
+      } else {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        if (email.length < 4) {
+          alert('Please enter a proper email address as the given format - e.g. jack@gmail.com');
+          window.location.reload();
+          return;
+        }
+        if (password.length < 4) {
+          alert('Please enter a proper password not less than 4 characters - e.g. hhjgh7');
+          window.location.reload();
+          return;
+        }
+        // Sign in with email and pass.
+        // [START authwithemail]
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // [START_EXCLUDE]
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+            window.location.reload();
+          } else {
+            alert(errorMessage);
+            window.location.reload();
+          }
+          console.log(error);
+          document.getElementById('sign-in').disabled = false;
+          // [END_EXCLUDE]
+        });
+        // [END authwithemail]
+      }
+      document.getElementById('sign-in').disabled = true;
+    }
+
+    /**
+     * Handles the sign up button press.
+     */
+    function handleSignUp() {
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+      if (email.length < 4) {
+        alert('Please enter a correct email address.');
+        window.location.reload();
+        return;
+      }
+      if (password.length < 4) {
+        alert('Please enter a correct password.');
+        window.location.reload();
+        return;
+      }
+      
+      alert('You have successfully created an account if you do not receive any further pop-ups.');
+        
+      // Sign in with email and pass.
+      // [START createwithemail]
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+          window.location.reload();
+        } else {
+          alert(errorMessage);
+          window.location.reload();
+        } 
+        console.log(error);
+        // [END_EXCLUDE]
+      });
+      // [END createwithemail]
+    }
+
+    /**
+     * Sends an email verification to the user.
+     */
+    function sendEmailVerification() {
+      // [START sendemailverification]
+      firebase.auth().currentUser.sendEmailVerification().then(function() {
+        // Email Verification sent!
+        // [START_EXCLUDE]
+        alert('Email Verification Sent!');
+        // [END_EXCLUDE]
+      });
+      // [END sendemailverification]
+    }
+
+    function sendPasswordReset() {
+      var email = document.getElementById('email').value;
+      // [START sendpasswordemail]
+      firebase.auth().sendPasswordResetEmail(email).then(function() {
+        // Password Reset Email Sent!
+        // [START_EXCLUDE]
+        alert('Password Reset Email Sent!');
+        // [END_EXCLUDE]
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/invalid-email') {
+          alert(errorMessage);
+        } else if (errorCode == 'auth/user-not-found') {
+          alert(errorMessage);
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+      });
+      // [END sendpasswordemail];
+    }
+
+    /**
+     * initApp handles setting up UI event listeners and registering Firebase auth listeners:
+     *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
+     *    out, and that is where we update the UI.
+     */
+    function initApp() {
+      // Listening for auth state changes.
+      // [START authstatelistener]
+      firebase.auth().onAuthStateChanged(function(user) {
+        // [START_EXCLUDE silent]
+        document.getElementById('verify-email').disabled = true;
+        // [END_EXCLUDE]
+        if (user) {
+          // User is signed in.
+            //window.location = '../dashboard.html';
+          // var displayName = user.displayName;
+          //var email = user.email;
+          //var emailVerified = user.emailVerified;
+          //var photoURL = user.photoURL;
+          //var isAnonymous = user.isAnonymous;
+          //var uid = user.uid;
+          //var providerData = user.providerData;
+          // [START_EXCLUDE]
+          //document.getElementById('sign-in-status').textContent = 'Signed in';
+          //document.getElementById('sign-in').textContent = 'Sign out';
+          //document.getElementById('account-details').textContent = JSON.stringify(user, null, '  ');
+        
+            document.getElementById('log-out').disabled = false;
+            
+          if (!emailVerified) {
+            document.getElementById('verify-email').disabled = false;
+          }
+          // [END_EXCLUDE]
+        } else {
+          // User is logged out.
+           // window.location = '../index.html';
+          // [START_EXCLUDE]
+         // document.getElementById('sign-in-status').textContent = 'Signed out';
+         // document.getElementById('sign-in').textContent = 'Sign in';
+         // document.getElementById('account-details').textContent = 'null';
+          // [END_EXCLUDE]
+        }
+        // [START_EXCLUDE silent]
+       // document.getElementById('sign-in').disabled = false;
+        // [END_EXCLUDE]
+      });
+      // [END authstatelistener]
+      document.getElementById('sign-in').disabled = false;
+        
+      document.getElementById('sign-in').addEventListener('click', toggleSignIn, false);
+      document.getElementById('sign-up').addEventListener('click', handleSignUp, false);
+      document.getElementById('verify-email').addEventListener('click', sendEmailVerification, false);
+      document.getElementById('password-reset').addEventListener('click', sendPasswordReset, false);
+    }
+
+    window.onload = function() {
+      initApp();
+    };
+  
+    </script>
+      
+<style>
+input[type=email], input[type=password] {
+    width: 40%;
+    margin-left: 400px;
+    margin-right: 350px;
+    margin-bottom: 10px;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type=submit] {
+    background-color: lightslategrey; /* Green background */
+    border: 1px solid grey; /* Green border */
+    color: white; /* White text */
+    cursor: pointer; /* Pointer/hand icon */
+    padding: 3px 10px;
+    float: left; 
+    
+}
+
+button[type=submit]:hover {
+    background-color: lightblue;
+}
+
+</style>
+</head>
+
+
+<body>
+ 
+  <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">Smart Garden</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../contact/index.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../verification/index.html">Registration</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="authorization/index.html">Login/SignUp</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+   <div id="container">
+        <br>
+        <br>
+          <h4 style="margin-top: 6%; margin-right: 3%; text-align:center"><b>Login to Smart Garden</b></h4>
+        <br>
+          <input type="email" id="email" name="email" placeholder="Email..." required>
+        <br>
+          <input type="password"  id="password" name="password" placeholder="Password..." required>
+        <br>
+        <br>
+          <button disabled type="submit" style="margin-left: 520px;" id="sign-in" name="signin">Login</button>
+          <button type="submit" id="sign-up" name="signup">Sign Up!</button>
+          <button type="submit" id="password-reset" name="verify-email">Forgot Password?</button>
+          <button type="submit" style="display: none" disabled id="verify-email" name="verify-email"></button>
+       <br>
+   </div>
+      
+</body>
+</html>
